@@ -1,0 +1,12 @@
+{{#if showForm}}
+<form >
+{{input placeholder="title" value=event.title}}
+{{input placeholder="desc" value=event.description}}
+{{input placeholder="duration - days" value=event.duration }}
+{{input type="date" value=event.startDate }}
+</form>
+<button {{action 'editEvent' event}}>save</button>
+{{else}}
+<button {{action 'showForm'}}>Edit</button>
+{{/if}}
+{{yield}}

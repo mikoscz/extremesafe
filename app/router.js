@@ -10,6 +10,9 @@ Router.map(function() {
   this.route('auth', function() {
     this.route('login');
   });
+  this.route('events', function() {
+    this.route('event', {path: ':event_id'});
+  });
 });
 
 export default Router;
