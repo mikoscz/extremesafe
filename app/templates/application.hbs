@@ -1,3 +1,13 @@
+{{#paper-toolbar as |toolbar|}}
+ {{#toolbar.tools}}
+   <h2>StayExtreme</h2>
+   <span class="flex"></span>
+   {{#paper-button mini=true aria-label="Favorite"}}
+    {{paper-icon "event"}}
+   {{/paper-button}}
+ {{/toolbar.tools}}
+{{/paper-toolbar}}
+
 {{#if session.isAuthenticated}}
   {{session.currentUser.name}}
   {{users/avatar-box user=session.currentUser}}
