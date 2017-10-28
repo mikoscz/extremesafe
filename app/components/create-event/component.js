@@ -11,13 +11,13 @@ export default Component.extend({
           description = this.get('description'),
           startDate = this.get('startDate'),
           duration = this.get('duration');
-      let event = store.createRecord('event',{
+      let params = {
         title: title,
         description: description,
         startDate: startDate,
         duration: duration,
-      });
-      event.save();
+      }
+      this.sendAction('newEvent',params);
     }
   }
 });
