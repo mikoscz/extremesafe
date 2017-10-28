@@ -14,7 +14,9 @@ Router.map(function() {
     this.route('event', {path: ':event_id'});
   });
   this.route('profile');
-  this.route('events');
+  this.route('events', function() {
+    this.route('new');
+  });
 });
 
 export default Router;
