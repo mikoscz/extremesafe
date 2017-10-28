@@ -4,6 +4,5 @@ export default DS.Model.extend({
   description: DS.attr('string'),
 
   startDate: DS.attr(),
-  duration: DS.attr('string'),
-
+  duration: DS.attr('string')
 });

@@ -13,6 +13,10 @@ Router.map(function() {
   this.route('events', function() {
     this.route('event', {path: ':event_id'});
   });
+  this.route('profile', function() {
+    this.route('edit');
+  });
+  this.route('events');
 });
 
 export default Router;
