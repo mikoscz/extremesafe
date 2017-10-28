@@ -1,8 +1,1 @@
-{{#if session.isWorking}}
-  One sec while we get you signed in...
-{{else}}
-  {{error}}
-  <a href="#" {{action 'signIn'}}>
-    Sign In with Facebook
-  </a>
-{{/if}}
+<button {{action 'signIn'}}>Sign in with Google</button>

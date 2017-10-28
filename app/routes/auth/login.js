@@ -1,14 +1,15 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
+  session: service(),
+
   actions: {
     signIn() {
-      // debugger
-      // this.get('session').open('google-oauth2').then(function(){
-      //   debugger;
-      // }, (error) => {
-      //   // controller.set('error', 'Could not sign you in: '+error.message);
-      // });
+      return this.get('session').open('firebase', { provider: 'google' }).then((data) => {
+        console.log(data.currentUser)
+        this.transitionTo('/');
+      });
     }
   }
 });
