@@ -1,1 +1,9 @@
+<form {{action 'newEvent'}} on='submit'>
+{{input placeholder="title" value=title }}
+{{input placeholder="desc" value=description}}
+{{input placeholder="duration - days" value=duration }}
+{{input type="date" value=startDate }}
+<button type="submit">Create</button>
+</form>
+
 {{yield}}
