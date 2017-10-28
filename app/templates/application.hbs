@@ -1,5 +1,6 @@
 {{#if session.isAuthenticated}}
   {{session.currentUser.name}}
+  {{users/avatar-box user=session.currentUser}}
   {{buttons/log-out}}
 {{else}}
   Not logged in

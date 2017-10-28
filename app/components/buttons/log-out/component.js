@@ -3,10 +3,15 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
   session: service(),
+  router: service(),
 
   actions: {
     signOut() {
-      this.get('session').close();
+      return this.get('session')
+        .close()
+        .then(() => {
+          this.get('router').transitionTo('auth.login');
+        })
     }
   }
 });
