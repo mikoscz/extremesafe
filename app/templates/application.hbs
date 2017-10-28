@@ -1,58 +1,51 @@
 {{#paper-toolbar as |toolbar|}}
   {{#toolbar.tools}}
-
-    <div class="align-self-start">
-      {{#paper-speed-dial
-        animation='scale' direction='down'
-        open=open onToggle=(action (mut open)) as |dial|}}
-        {{#dial.trigger}}
-          {{#paper-button fab=true}}
-            {{paper-icon "menu"}}
-          {{/paper-button}}
-        {{/dial.trigger}}
-
-        {{#dial.actions as |actions|}}
-          {{#actions.action}}
-            {{#paper-button mini=true onClick=(action "navigate")}}
-              {{paper-icon "face"}}
-            {{/paper-button}}
-          {{/actions.action}}
-
-          {{#actions.action}}
-            {{#paper-button mini=true onClick=(action "navigate")}}
-              {{paper-icon "event"}}
-            {{/paper-button}}
-          {{/actions.action}}
-
-          {{#actions.action}}
-            {{#paper-button mini=true onClick=(action "navigate")}}
-              {{paper-icon "check-circle"}}
-            {{/paper-button}}
-          {{/actions.action}}
-        {{/dial.actions}}
-      {{/paper-speed-dial}}
-    </div>
-
+    {{#paper-button mini=true aria-label="Hamburger" onClick=(action 'toggleMenu')}}
+      {{paper-icon "menu"}}
+    {{/paper-button}}
     <h2>StayExtreme</h2>
     <span class="flex"></span>
 
     {{#if session.isAuthenticated}}
-      <h2>{{session.currentUser.name}}</h2>
-      {{!users/avatar-box user=session.currentUser}}
-      {{buttons/log-out}}
-    {{else}}
-     <h2>Not logged in</h2>
+      <img {{action "navigate" "profile"}} src={{session.currentUser.avatarUrl}} alt="user avatar" class="avatar-img mh-40">
     {{/if}}
   {{/toolbar.tools}}
 {{/paper-toolbar}}
 
+{{#paper-sidenav-container class="inner-sidenav"}}
+  {{#paper-sidenav
+    class="md-whiteframe-z"
+    name="left"
+    open=leftSideBarOpen
+    lockedOpen=leftSideBarLockedOpen
+    onToggle=(action (mut leftSideBarOpen))}}
+    {{#paper-toolbar as |toolbar|}}
+      {{#paper-toolbar-tools}}Navigation{{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{#paper-content padding=true}}
+      {{#paper-item onClick=(action "navigate" "events" true)}}
+        <div class="md-list-item-text">
+          <p>Events</p>
+        </div>
+      {{/paper-item}}
+    {{/paper-content}}
+    {{#paper-content padding=true}}
+      {{#paper-item onClick=(action "navigate" "profile" true)}}
+        <div class="md-list-item-text">
+          <p>Profile</p>
+        </div>
+      {{/paper-item}}
+    {{/paper-content}}
+    {{#paper-content padding=true}}
+      {{#paper-item onClick=(action "signOut" null true)}}
+        <div class="md-list-item-text">
+          <p>Sign out</p>
+        </div>
+      {{/paper-item}}
+    {{/paper-content}}
+  {{/paper-sidenav}}
 
-{{!#if session.isAuthenticated}}
-  {{!session.currentUser.name}}
-  {{!users/avatar-box user=session.currentUser}}
-  {{!buttons/log-out}}
-{{!else}}
-  <!-- Not logged in -->
-{{!/if}}
-
-{{outlet}}
+  {{#paper-card-content class="flex"}}
+    {{outlet}}
+  {{/paper-card-content}}
+{{/paper-sidenav-container}}
