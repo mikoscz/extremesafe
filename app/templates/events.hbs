@@ -1,0 +1,11 @@
+{{create-event}}
+<ul>
+{{#each model as |event|}}
+{{#link-to 'events.event' event}}
+<li>Title: {{event.title}}</li>
+{{/link-to}}
+<li>{{event.startDate}}</li>
+{{/each}}
+</ul>
+
+{{outlet}}
