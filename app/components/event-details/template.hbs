@@ -1,8 +1,24 @@
-<ul>
-<li>Title: {{event.title}}</li>
-<li>Desc: <br> {{event.description}}</li>
-<li>How Long: {{event.duration}}</li>
-<li>When: {{event.startDate}}</li>
-</ul>
-
-{{outlet}}
+{{#paper-card as |card|}}
+  {{#card.header as |header|}}
+    {{#header.avatar}}
+    <img src={{event.creator.avatarUrl}} alt="user avatar" />
+    {{/header.avatar}}
+    {{#header.text as |text|}}
+      {{#text.title}}{{event.creator.name}}{{/text.title}}
+    {{/header.text}}
+  {{/card.header}}
+  {{card.image src="/assets/images/event_ph.png" alt="Washed Out" title="Washed Out"}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+    {{#text.headline}}{{event.title}}{{/text.headline}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    <p>
+      {{event.description}}
+    </p>
+    <p>
+      {{event.startDate}}
+    </p>
+  {{/card.content}}
+{{/paper-card}}

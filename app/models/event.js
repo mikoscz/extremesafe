@@ -7,5 +7,5 @@ export default DS.Model.extend({
   startDate: DS.attr(),
   duration: DS.attr('string'),
 
-  creator: DS.belongsTo('user')
+  creator: DS.belongsTo('user', { async: true })
 });
