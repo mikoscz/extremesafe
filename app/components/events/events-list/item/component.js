@@ -13,6 +13,10 @@ export default Component.extend({
   actions: {
     toEvent(event) {
       this.get('router').transitionTo('events.event', event);
+    },
+
+    remove(event) {
+      event.destroyRecord();
     }
   }
 });

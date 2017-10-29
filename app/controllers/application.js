@@ -21,6 +21,7 @@ export default Controller.extend({
       return this.get('session')
         .close()
         .then(() => {
+          this.toggleProperty('leftSideBarLockedOpen');
           this.get('router').transitionTo('auth.login');
         })
     }

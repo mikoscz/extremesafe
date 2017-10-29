@@ -1,16 +1,18 @@
-{{#paper-toolbar as |toolbar|}}
-  {{#toolbar.tools}}
-    {{#paper-button mini=true aria-label="Hamburger" onClick=(action 'toggleMenu')}}
-      {{paper-icon "menu"}}
-    {{/paper-button}}
-    <h2>StayExtreme</h2>
-    <span class="flex"></span>
+{{#if session.isAuthenticated}}
+  {{#paper-toolbar as |toolbar|}}
+    {{#toolbar.tools}}
+      {{#paper-button aria-label="Hamburger" onClick=(action 'toggleMenu')}}
+        {{paper-icon "menu"}}
+      {{/paper-button}}
+      <h2>StayExtreme</h2>
+      <span class="flex"></span>
 
-    {{#if session.isAuthenticated}}
-      <img {{action "navigate" "profile"}} src={{session.currentUser.avatarUrl}} alt="user avatar" class="avatar-img mh-40">
-    {{/if}}
-  {{/toolbar.tools}}
-{{/paper-toolbar}}
+      {{#if session.isAuthenticated}}
+        <img {{action "navigate" "profile"}} src={{session.currentUser.avatarUrl}} alt="user avatar" class="avatar-img mh-40">
+      {{/if}}
+    {{/toolbar.tools}}
+  {{/paper-toolbar}}
+{{/if}}
 
 {{#paper-sidenav-container class="inner-sidenav"}}
   {{#paper-sidenav
