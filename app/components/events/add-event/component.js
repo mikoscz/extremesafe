@@ -7,9 +7,11 @@ export default Component.extend({
   session: service(),
 
   sports: [
-    { name: 'first' },
-    { name: 'second' },
-    { name: 'third' }
+    { name: 'Downhill 4-Cross Biking' },
+    { name: 'SitSki' },
+    { name: 'Wheelchair Skateboarding' },
+    { name: 'Skydiving Wheelchair' },
+    { name: 'Climbing' }
   ],
 
   actions: {
