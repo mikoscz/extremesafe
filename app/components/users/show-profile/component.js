@@ -5,10 +5,9 @@ export default Component.extend({
   session: service(),
 
   classNames: ['user-profile profile'],
-
   actions: {
     saveProfile() {
-      this.get('user.save');
+      this.get('user').save();
     }
   }
 });
