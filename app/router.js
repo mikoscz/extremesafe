@@ -12,9 +12,9 @@ Router.map(function() {
   });
   this.route('events', function() {
     this.route('event', {path: ':event_id'});
+    this.route('add');
   });
   this.route('profile');
-  this.route('events');
 });
 
 export default Router;

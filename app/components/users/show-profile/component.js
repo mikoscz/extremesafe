@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service'
 export default Component.extend({
   session: service(),
 
-  classNames: ['user-profile'],
+  classNames: ['user-profile profile'],
 
   actions: {
     saveProfile() {

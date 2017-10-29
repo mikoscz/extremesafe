@@ -1,0 +1,38 @@
+{{#paper-card class="profile-card pd-20" as |card| }}
+  <h2>Create new event</h2>
+
+  {{#paper-form onSubmit=(action "addEvent") as |form|}}
+      <div class="layout-column flex-100 center">
+        {{form.input label="Name" value=name onChange=(action (mut name)) required=true}}
+
+        {{paper-pikaday
+          required=true
+          value=date
+          class='flex-100'
+          label='Date'
+          onChange=(action (mut date)) }}
+
+        {{form.input textarea=true block=true maxlength=150 passThru=(hash rows=5 maxRows=5) label="Description"
+          value=description onChange=(action (mut description))}}
+
+        {{#form.autocomplete
+          options=sports
+          selected=selectedSport
+          searchField="name"
+          labelPath="name"
+          label="Sport"
+          loadingMessage="Searching sports..."
+          noMatchesMessage="Not found"
+          onSelectionChange=(action (mut selectedSport)) as |sport select|}}
+          {{paper-autocomplete-highlight
+            label=sport.name
+            searchText=select.searchText
+            flags="i"}}
+        {{/form.autocomplete}}
+
+      <div class="layout-row">
+        {{#form.submit-button raised=true primary=true}}Submit{{/form.submit-button}}
+      </div>
+    </div>
+  {{/paper-form}}
+{{/paper-card}}

@@ -1,33 +1,39 @@
-{{users/avatar-box user=session.currentUser}}
-<h2>{{user.name}}</h2>
+{{#paper-card class="profile-card top" as |card| }}
+  {{users/avatar-box user=session.currentUser}}
+  <h2>{{user.name}}</h2>
+{{/paper-card}}
 
-<div class="layout-column">
-  {{#paper-checkbox value=value1 onChange=(action (mut value1))}}
-    Indyvidual
-  {{/paper-checkbox}}
+{{#paper-card class="profile-card bottom" as |card| }}
+  <div class="layout-column">
+    <h2>Settings</h2>
 
-  <h2>Additional tools:</h2>
-  {{#paper-checkbox value=value2 onChange=(action (mut value2))}}
-    wheelchair
-  {{/paper-checkbox}}
+    {{#paper-checkbox value=value1 onChange=(action (mut value1))}}
+      Indyvidual
+    {{/paper-checkbox}}
 
-  {{#paper-checkbox value=value3 onChange=(action (mut value3))}}
-    eletrical wheelchair
-  {{/paper-checkbox}}
+    <h3>Additional tools:</h3>
+    {{#paper-checkbox value=value2 onChange=(action (mut value2))}}
+      wheelchair
+    {{/paper-checkbox}}
+
+    {{#paper-checkbox value=value3 onChange=(action (mut value3))}}
+      eletrical wheelchair
+    {{/paper-checkbox}}
 
 
-  <h2>disability:</h2>
-  {{#paper-checkbox value=value4 onChange=(action (mut value4))}}
-  spine injury
-  {{/paper-checkbox}}
+    <h3>disability:</h3>
+    {{#paper-checkbox value=value4 onChange=(action (mut value4))}}
+    spine injury
+    {{/paper-checkbox}}
 
-  {{#paper-checkbox value=value5 onChange=(action (mut value5))}}
-    amputation
-  {{/paper-checkbox}}
+    {{#paper-checkbox value=value5 onChange=(action (mut value5))}}
+      amputation
+    {{/paper-checkbox}}
 
-  {{#paper-checkbox value=value6 onChange=(action (mut value6))}}
-    cerebral palsy
-  {{/paper-checkbox}}
+    {{#paper-checkbox value=value6 onChange=(action (mut value6))}}
+      cerebral palsy
+    {{/paper-checkbox}}
 
-  {{#paper-button onClick=(action "saveProfile")}}Save{{/paper-button}}
-</div>
+    {{#paper-button onClick=(action "saveProfile")}}Save{{/paper-button}}
+  </div>
+{{/paper-card}}
