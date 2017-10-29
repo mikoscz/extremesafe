@@ -6,33 +6,16 @@
 {{#paper-card class="profile-card bottom" as |card| }}
   <div class="layout-column">
     <h2>Settings</h2>
-
-    {{#paper-checkbox value=value1 onChange=(action (mut value1))}}
-      Indyvidual
-    {{/paper-checkbox}}
-
-    <h3>Additional tools:</h3>
-    {{#paper-checkbox value=value2 onChange=(action (mut value2))}}
-      wheelchair
-    {{/paper-checkbox}}
-
-    {{#paper-checkbox value=value3 onChange=(action (mut value3))}}
-      eletrical wheelchair
-    {{/paper-checkbox}}
-
-
-    <h3>disability:</h3>
-    {{#paper-checkbox value=value4 onChange=(action (mut value4))}}
-    spine injury
-    {{/paper-checkbox}}
-
-    {{#paper-checkbox value=value5 onChange=(action (mut value5))}}
-      amputation
-    {{/paper-checkbox}}
-
-    {{#paper-checkbox value=value6 onChange=(action (mut value6))}}
-      cerebral palsy
-    {{/paper-checkbox}}
+{{#paper-form as |form|}}
+<h3>User's abilities:</h3>
+{{paper-checkbox label="Individual" value=user.individual onChange=(action (mut user.individual))}}
+<h3>Uses:</h3>
+{{paper-checkbox label="wheelchair" value=user.wheelchair onChange=(action (mut user.wheelchair))}}
+<h3>Has injuries?:</h3>
+{{paper-checkbox label="spine injury" value=user.spineInjury onChange=(action (mut user.spineInjury))}}
+{{paper-checkbox label="amputation" value=user.amputation onChange=(action (mut user.amputation))}}
+{{paper-checkbox label="cerebralPalsy" value=user.cerebralPalsy onChange=(action (mut user.cerebralPalsy))}}
+{{/paper-form}}
 
     {{#paper-button onClick=(action "saveProfile")}}Save{{/paper-button}}
   </div>
